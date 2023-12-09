@@ -1,0 +1,27 @@
+.footer-container {
+    background-color: #FF7722;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .copyright {
+    margin-bottom: 10px;
+  }
+  
+  .scroll-up {
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .scroll-up:hover {
+    background-color: white;
+    color: #FF7722;
+  }
+  

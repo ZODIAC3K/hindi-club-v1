@@ -1,50 +1,187 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
-import { ReactNavbar } from 'overlay-navbar';
-import { FaUserAlt } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const logo = 'https://www.shutterstock.com/shutterstock/photos/2091193504/display_1500/stock-vector-kisan-diwas-means-national-farmers-day-december-to-honour-india-s-farmers-hindi-typography-2091193504.jpg';
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const toggleDrawer = () => {
+        setIsDrawerOpen(!isDrawerOpen);
+    };
+
+    const closeDrawer = () => {
+        setIsDrawerOpen(false);
+    };
 
     return (
-        <>
-            <ReactNavbar
-                //menu and nav
-                navColor1="#FF7722"
-                navColor2="hsl(219, 48%, 8%)"
-                burgerColor="black"
-                burgerColorHover="hsl(0, 100%, 9%)"
-                logo={logo}
-                logoWidth="250px"
-                logoHoverColor="hsl(54, 100%, 75%)"
-                nav2justifyContent="space-around"
-                nav3justifyContent="space-around"
-                //links
-                link1Text="Home"
-                link2Text="Event"
-                link3Text="OurTeam"
-                link4Text="About"
-                link1Url="/"
-                link2Url="/events"
-                link3Url="/team"
-                link4Url="/about"
-                link1ColorHover="white"
-                link1Color="HSL(54, 100%, 75%)"
-                link1Size="1.5rem"
-                link1Padding="3vmax"
+        <nav className="bg-orange-500 text-white py-4">
+            <div className="container mx-auto flex items-center justify-between">
+                <div className="text-lg font-bold">
+                    <Link to="/">Hindi Club Vit Bhopal</Link>
+                </div>
+                <div className="flex items-center">
+                    <div className="block lg:hidden">
+                        <button
+                            className="text-white focus:outline-none"
+                            onClick={toggleDrawer}
+                        >
+                            <svg
+                                className="h-6 w-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"
+                                ></path>
+                            </svg>
+                        </button>
+                    </div>
 
-                //profile
-                profileIcon={true}
-                ProfileIconElement={FaUserAlt}
-                profileIconUrl="/contact"
-                profileIconColor="HSL(54, 100%, 75%)"
-                profileIconColorHover="white"
-            ></ReactNavbar>
-        </>
+                   
+                    <ul className="hidden lg:flex space-x-4">
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/events">Event</Link>
+                        </li>
+                        <li>
+                            <Link to="/team">Our Team</Link>
+                        </li>
+                        <li>
+                            <Link to="/about">About</Link>
+                        </li>
+                        <Link to="/contact">
+                            Contact
+                        </Link>
+                    </ul>
+
+                    
+                    {isDrawerOpen && (
+                        <div className="lg:hidden fixed top-0 left-0 h-screen w-full bg-gray-800 text-white">
+                            <div className="flex justify-end p-4">
+                                <button
+                                    className="text-white focus:outline-none"
+                                    onClick={closeDrawer}
+                                >
+                                    
+                                    <svg
+                                        className="h-6 w-6"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            d="M6 18L18 6M6 6l12 12"
+                                        ></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <ul className="flex flex-col space-y-4 items-center justify-center mx-auto">
+                                <li>
+                                    <Link to="/" onClick={closeDrawer}>
+                                        Home
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/events" onClick={closeDrawer}>
+                                        Event
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/team" onClick={closeDrawer}>
+                                        Our Team
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/about" onClick={closeDrawer}>
+                                        About
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/contact" onClick={closeDrawer}>
+                                        Contact
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </nav>
     );
 };
 
 export default Navbar;
+
+
+
+
+
+
+// import React from 'react';
+// import { ReactNavbar } from 'overlay-navbar';
+// import { FaUserAlt } from 'react-icons/fa';
+
+// const Navbar = () => {
+//     const logo = 'https://www.shutterstock.com/shutterstock/photos/2091193504/display_1500/stock-vector-kisan-diwas-means-national-farmers-day-december-to-honour-india-s-farmers-hindi-typography-2091193504.jpg';
+
+//     return (
+//         <div className="bg-orange-500 text-white py-2">
+//             <div className="container mx-auto flex items-center justify-between">
+//                 <div className="text-lg font-bold">
+//                     Hindi Club Vit Bhopal
+//                 </div>
+//                 <div className="flex items-center">
+//                     <ReactNavbar
+//                         // menu and nav
+//                         navColor1="#FF7722"
+//                         navColor2="hsl(219, 48%, 8%)"
+//                         burgerColor="black"
+//                         burgerColorHover="hsl(0, 100%, 9%)"
+//                         logo={logo}
+//                         logoWidth="250px"
+//                         logoHoverColor="hsl(54, 100%, 75%)"
+//                         nav2justifyContent="space-around"
+//                         nav3justifyContent="space-around"
+//                         // links
+//                         link1Text="Home"
+//                         link2Text="Event"
+//                         link3Text="OurTeam"
+//                         link4Text="About"
+//                         link1Url="/"
+//                         link2Url="/events"
+//                         link3Url="/team"
+//                         link4Url="/about"
+//                         link1ColorHover="white"
+//                         link1Color="HSL(54, 100%, 75%)"
+//                         link1Size="1.5rem"
+//                         link1Padding="3vmax"
+
+//                         // profile
+//                         profileIcon={true}
+//                         ProfileIconElement={FaUserAlt}
+//                         profileIconUrl="/contact"
+//                         profileIconColor="HSL(54, 100%, 75%)"
+//                         profileIconColorHover="white"
+//                     ></ReactNavbar>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default Navbar;
+
+
 
 //for chnage take reference of below props or visit https://www.npmjs.com/package/overlay-navbar
 

@@ -9,7 +9,7 @@ const Footer = () => {
     };
 
     return (
-        <footer className="bg-orange-500 text-white py-5 flex justify-between items-center absolute bottom-0 w-full">
+        <footer className="bg-orange-500 text-white py-5 flex justify-between items-center  w-full"> 
             <div className="mb-2">&copy; {currentYear} Hindi Club VIT Bhopal University</div>
             <div className="cursor-pointer p-2 border-2 border-white rounded transition duration-300 hover:bg-white hover:text-orange-500" onClick={scrollToTop}>
                 <FaArrowUp />
